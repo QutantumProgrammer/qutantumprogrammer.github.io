@@ -1,0 +1,146 @@
+
+<!doctype html>
+<html>
+  <head>
+<meta charset="utf-8">
+    <title>NERV</title>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	var magicount=2;
+   function magi(){
+	   if(magicount<8){
+	   $("#magi").css("background-image",'url(img/MAGI/b'+magicount+'.png)');
+	   setTimeout("magi()",200);
+	   }else if(magicount<25){
+       if(magicount%2==0){
+    	   $("#magi").css("background-image",'url(img/MAGI/b6.png)');
+    	   setTimeout("magi()",80);
+           }else{
+        	   $("#magi").css("background-image",'url(img/MAGI/b7.png)');
+        	   setTimeout("magi()",80);
+               }
+               if(magicount==24){
+	           magicount=1000;
+               }
+       
+	   }else{
+		   if(magicount%10==0){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_100.png)');
+		   setTimeout("magi()",100);
+		   }else if(magicount%10==1){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_90.png)');
+		   setTimeout("magi()",100);
+		   }else if(magicount%10==2){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_80.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==3){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_70.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==4){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_60.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==5){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_50.png)');
+		   setTimeout("magi()",100);
+		   }else if(magicount%10==6){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_40.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==7){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_30.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==8){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_20.png)');
+		   setTimeout("magi()",100);
+		   }
+		   else if(magicount%10==9){
+		   $("#magi").css("background-image",'url(img/MAGI/MAGI_DENY/b8_10.png)');
+		   setTimeout("magi()",100);
+		   }
+		   
+		   }
+	   magicount++;
+	   };
+
+	
+	
+	$(function(){
+    $("#b1").click(function(){
+        magi();
+        });
+		});
+	
+	
+	</script>
+<style type="text/css">
+body{
+background-color: #000000;
+margin-left: 0;
+margin-right: 0;
+margin-top: 0;
+}
+.div1{
+background-color:#000000;
+margin-top:8px;
+border-right-style: solid;
+border-left-style:solid;
+border-width: 1px;
+border-color: #ff7800;
+//height: 48%;
+margin-left: 6px;
+margin-right: 6px;
+color: #ff7800;
+}
+.div2{
+background-color:#150000;
+margin-top:8px;
+border-right-style: solid;
+border-left-style:solid;
+border-width: 1px;
+border-color: #ff7800;
+height: 48%;
+margin-left: 6px;
+margin-right: 6px;
+color: #ff7800;
+}
+.div3{
+background-image:url("img/bgeva2.png");
+margin-top:6px;
+margin-left:12px;
+margin-right:12px;
+height:18px;
+background-repeat: no-repeat;
+}
+.i1{
+height:60px;
+width: 60px; 
+border-width:5px;
+border-radius:50%;
+border-color: #ff7800;
+border-style: solid;
+color: #ff7800;
+font-weight: 900;
+text-align: center;
+}
+.magi{
+background: url("img/MAGI/b1.png");
+background-repeat: no-repeat;
+width:502px;
+height:300px;
+}
+</style>
+  </head>
+  
+  <body>
+   <div class="div1">
+   <div class="magi" id="magi"></div>
+   <div class="i1" >NERV<input type="button" value="test" id="b1"></div>
+   </div>
+   <div class="div2">─</div>
+   <div class="div3"></div>
+  </body>
+</html>
