@@ -1,0 +1,657 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>beat1.0.0.2</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js">
+	</script>
+	<script type="text/javascript">
+		var l = 1 + Math.random() * 3.5;
+		var t = 1 + Math.random() * 3.5;
+		var mark = 0;
+		var keypress = 0;
+		var fcount = 0;
+		var acceleration = 1;
+		var p1down1 = 0;
+		var p1down2 = 0;
+		var p1up1 = 0;
+		var p1up2 = 0;
+		var p2down1 = 0;
+		var p2down2 = 0;
+		var p2up1 = 0;
+		var p2up2 = 0;
+
+		function finish1() {
+			if (fcount < 10) {
+				ballpos.left = ballpos.left + l;
+				ballpos.top = ballpos.top + t;
+				$('#ball').offset(ballpos);
+				setTimeout("finish1()", 10);
+				fcount++;
+			} else {
+
+				$("<div class='alert'></div>").appendTo("body");
+				$("<div class='title' align='center'></div>").appendTo(".alert");
+				tempf = $('#div1').offset();
+				tempf.top = tempf.top + $("#div1").height() / 2 - $(".title").height()
+				/ 2;
+				tempf.left = tempf.left + $("#div1").width() / 2 - $(".title").width()
+				/ 2;
+				$('.title').offset(tempf);
+				$(
+					"<div id='word'><span style='font-weight: 900;font-size: 30px;' id='span1'>Player1 Wins</span><div>")
+				.appendTo(".title");
+				tempf = $('.title').offset();
+				tempf.top = tempf.top + $(".title").height() / 2 - $("#word").height()
+				/ 2;
+				tempf.left = tempf.left + $(".title").width() / 2 - $("#word").width()
+				/ 2;
+				$('#word').offset(tempf);
+			}
+
+		}
+
+		function finish2() {
+			if (fcount < 10) {
+
+				ballpos.left = ballpos.left + l;
+				ballpos.top = ballpos.top + t;
+				$('#ball').offset(ballpos);
+				setTimeout("finish2()", 10);
+				fcount++;
+			} else {
+				$("<div class='alert'></div>").appendTo("body");
+				$("<div class='title' align='center'></div>").appendTo(".alert");
+
+		//设置弹出提示位置	
+		tempf = $('#div1').offset();
+		tempf.top = tempf.top + $("#div1").height() / 2 - $(".title").height()
+		/ 2;
+		tempf.left = tempf.left + $("#div1").width() / 2 - $(".title").width()
+		/ 2;
+		$('.title').offset(tempf);
+		$(
+			"<div id='word'><span style='font-weight: 900;font-size: 30px;' id='span1'>Player2 Wins</span><div>")
+		.appendTo(".title");
+		tempf = $('.title').offset();
+		tempf.top = tempf.top + $(".title").height() / 2 - $("#word").height()
+		/ 2;
+		tempf.left = tempf.left + $(".title").width() / 2 - $("#word").width()
+		/ 2;
+		$('#word').offset(tempf);
+	}
+
+}
+
+function move() {
+	if (ballpos.top > pos.top + 400 - 7) {
+		t = -t;
+
+	} else if (ballpos.top < pos.top + 2) {
+		t = -t;
+
+	} else if (ballpos.left > pos.left + 900 - 8) {
+		if (ballpos.top + 8 > p2.top && ballpos.top < p2.top + 120) {
+			//越过指定位置后回退上一次移动的距离   避免参数改变后横向移动过小未回退到指定位置之前
+			ballpos.left = ballpos.left - l;
+			ballpos.top = ballpos.top - t;
+			$('#ball').offset(ballpos);
+			l = -l;
+			acceleration++;
+			//加速
+			if (acceleration % 4 == 0 && acceleration < 13) {
+				l = 1.6 * l;
+				t = 1.6 * t;
+			}
+			var length = Math.abs(ballpos.top - p2.top);
+			var markl = Math.round(length / 10);
+			//速度标识
+			var hypotenuse = l * l + t * t;
+
+			//计算t能改变的最大值
+			var parameter = Math.abs(t / Math.sqrt(hypotenuse));
+
+			//alert('markl:'+markl);
+			//alert('t:'+t);
+			//alert('l:'+l);
+			//根据碰撞位置选择回弹角度
+			switch (markl) {
+				case 0:
+				t = t / parameter * 0.3;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 1:
+				t = t / parameter * 0.14;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 2:
+				t = t / parameter * 0.18;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 3:
+				t = t / parameter * 0.2;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 4:
+				t = t / parameter * 0.3;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 5:
+				t = t / parameter * 0.4;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 6:
+				t = t / parameter * 0.5;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 7:
+				t = t / parameter * 0.6;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 8:
+				t = t / parameter * 0.7;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 9:
+				t = t / parameter * 0.8;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 10:
+				t = t / parameter * 0.9;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 11:
+				t = t / parameter * 0.93;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 12:
+				t = t / parameter * 0.95;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 13:
+				t = t / parameter * 0.98;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+			}
+
+			//	alert('t:'+t);
+			//	alert('l:'+l);
+			//球与板的中线越远 反射角度越偏上
+
+		} else {
+			finish1();
+			return false;
+			clearTimeout(st);
+		}
+
+	} else if (ballpos.left < pos.left + 2) {
+		if (ballpos.top + 8 > p1.top && ballpos.top < p1.top + 120) {
+			//越过指定位置后回退上一次移动的距离   避免参数改变后横向移动过小未回退到指定位置之前
+			ballpos.left = ballpos.left - l;
+			ballpos.top = ballpos.top - t;
+			$('#ball').offset(ballpos);
+
+			l = -l;
+			acceleration++;
+			if (acceleration % 4 == 0 && acceleration < 13) {
+				l = 1.6 * l;
+				t = 1.6 * t;
+			}
+			var length = Math.abs(ballpos.top - p1.top);
+			var markl = Math.round(length / 10);
+			//速度标识
+			var hypotenuse = l * l + t * t;
+
+			//计算t能改变的最大值
+			var parameter = Math.abs(t / Math.sqrt(hypotenuse));
+
+			//根据碰撞位置选择回弹角度
+			switch (markl) {
+				case 0:
+				t = t / parameter * 0.3;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 1:
+				t = t / parameter * 0.14;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 2:
+				t = t / parameter * 0.18;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 3:
+				t = t / parameter * 0.2;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 4:
+				t = t / parameter * 0.3;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 5:
+				t = t / parameter * 0.4;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 6:
+				t = t / parameter * 0.5;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 7:
+				t = t / parameter * 0.6;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 8:
+				t = t / parameter * 0.7;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 9:
+				t = t / parameter * 0.8;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 10:
+				t = t / parameter * 0.9;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 11:
+				t = t / parameter * 0.93;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 12:
+				t = t / parameter * 0.95;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+				case 13:
+				t = t / parameter * 0.98;
+				if (l > 0) {
+					l = Math.sqrt(hypotenuse - t * t);
+				} else {
+					l = -Math.sqrt(hypotenuse - t * t);
+				}
+				break;
+			}
+
+		} else {
+			finish2();
+			return false;
+			clearTimeout(st);
+		}
+
+	}
+
+	ballpos.left = ballpos.left + l;
+	ballpos.top = ballpos.top + t;
+	$('#ball').offset(ballpos);
+	var st = setTimeout("move()", 10);
+
+}
+//player1down 延时运动 过度自然
+function player1down() {
+	///
+
+	if (p1.top + 120 < pos.top + 400 + 1) {
+		p1.top = p1.top + 8;
+		$('#player1').offset(p1);
+		if (p1down2 == 1) {
+			setTimeout("player1down()", 20);
+		}
+	}
+}
+//player1up 延时运动 过度自然
+function player1up() {
+
+	if (p1.top > pos.top + 1) {
+		p1.top = p1.top - 8;
+		$('#player1').offset(p1);
+		if (p1up2 == 1) {
+			setTimeout("player1up()", 20);
+		}
+	}
+}
+
+//player2down 延时运动 过度自然
+function player2down() {
+	if (p2.top + 120 < pos.top + 400 + 1) {
+		p2.top = p2.top + 8;
+		$('#player2').offset(p2);
+		if (p2down2 == 1) {
+			setTimeout("player2down()", 20);
+		}
+	}
+}
+
+//player2up 延时运动 过度自然
+function player2up() {
+	if (p2.top > pos.top + 1) {
+		p2.top = p2.top - 8;
+		$('#player2').offset(p2);
+		if (p2up2 == 1) {
+			setTimeout("player2up()", 20);
+		}
+	}
+}
+
+$(function() {
+	//设置player1位置
+	temp = $('#div1').offset();
+	temp.top = temp.top + $("#div1").height() / 2 - $("#player1").height() / 2;
+	temp.left = temp.left - $("#player1").width();
+	$('#player1').offset(temp);
+
+	//设置player2位置
+	temp = $('#div1').offset();
+	temp.top = temp.top + $("#div1").height() / 2 - $("#player2").height() / 2;
+	temp.left = temp.left + $("#div1").width() + 1;
+	$('#player2').offset(temp);
+
+	//ball 运动
+	$(document).keydown(function(event) {
+		//alert(event.keyCode);
+		p2 = $('#player2').offset();
+		p1 = $('#player1').offset();
+		if (event.keyCode == 13) {
+			pos = $('#div1').offset();
+			ballpos = $('#ball').offset();
+			if (mark == 0) {
+				mark = 1;
+				move();
+			}
+				//player1 down
+			} else if (event.keyCode == 83) {
+				pos = $('#div1').offset();
+				p1 = $('#player1').offset();
+
+				p1down2 = 1;
+				if (p1down1 == 0) {
+					player1down();
+				}
+				p1down1 = 1;
+
+				//player1 up
+			} else if (event.keyCode == 87) {
+				pos = $('#div1').offset();
+				p1 = $('#player1').offset();
+				p1up2 = 1;
+				if (p1up1 == 0) {
+					player1up();
+				}
+				p1up1 = 1;
+			}
+		});
+
+	$(document).keydown(function(event) {
+		//alert(event.keyCode);
+			//player2 down
+			if (event.keyCode == 40) {
+				pos = $('#div1').offset();
+				p2 = $('#player2').offset();
+				p2down2 = 1;
+				if (p2down1 == 0) {
+					player2down();
+				}
+				p2down1 = 1;
+				//player2 up
+			} else if (event.keyCode == 38) {
+				pos = $('#div1').offset();
+				p2 = $('#player2').offset();
+				p2up2 = 1;
+				if (p2up1 == 0) {
+					player2up();
+				}
+				p2up1 = 1;
+			}
+		});
+	//抬起按键取消移动循环
+	$(document).keyup(function(event) {
+		if (event.keyCode == 83) {
+			p1down2 = 0;
+			p1down1 = 0;
+		} else if (event.keyCode == 87) {
+			p1up2 = 0;
+			p1up1 = 0;
+		} else if (event.keyCode == 38) {
+			p2up2 = 0;
+			p2up1 = 0;
+		} else if (event.keyCode == 40) {
+			p2down2 = 0;
+			p2down1 = 0;
+		}
+	});
+});
+</script>
+<style type="text/css">
+	body {
+		background-color: #fdfdfd;
+		margin: 140px auto;
+		overflow: hidden;
+	}
+
+	#div1 {
+		border: 1px;
+		border-color: #0f3768;
+		border-style: solid;
+		width: 900px;
+		height: 400px;
+		margin: 0 auto;
+		border-left-color: #0f3768;
+		border-right-color: #0f3768;
+	}
+
+	#ball {
+		position: absolute;
+		left: 400px;
+		top: 300px;
+		background-color: #000000;
+		height: 8px;
+		width: 8px;
+	}
+
+	#player1 {
+		position: absolute;
+		height: 120px;
+		width: 8px;
+		background-color: #1a1c21;
+	}
+
+	#player2 {
+		position: absolute;
+		height: 120px;
+		width: 8px;
+		background-color: #1a1c21;
+	}
+
+	.alert {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		background-color: #000000;
+		filter: alpha(opacity =           50);
+		-moz-opacity: 0.5;
+		-khtml-opacity: 0.5;
+		opacity: 0.5;
+	}
+
+	.title {
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#303234', endColorstr='#29528d',GradientType=0 ); /* IE6-9 */
+		width: 20%;
+		height: 20%;
+		position: absolute;
+		margin: 0 auto;
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#303234),
+			to(#29528d) );
+		background: -moz-linear-gradient(top, #303234, #29528d);
+		border-style: solid;
+		color: white;
+		vertical-align: middle;
+		color: white;
+	}
+
+	#pt1 {
+		position: absolute;
+		background-color: #c2c9de;
+		font-weight: 900;
+		font-size: 30px;
+		left: 1%;
+		top: 100px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: #000000;
+	}
+
+	#pt2 {
+		position: absolute;
+		background-color: #c2c9de;
+		font-size: 30px;
+		font-weight: 900;
+		right: 1%;
+		top: 100px;
+		border-style: solid;
+		border-width: 2px;
+		border-color: #000000;
+	}
+
+	#name {
+		font-size: 25px;
+		font-weight: 900;
+		color: red;
+		position: absolute;
+		left: 48%;
+		top: 5px;
+	}
+
+	#top {
+		width: 100%;
+		height: 53px;
+		background-color: #252c36;
+		top: 0px;
+		position: absolute;
+	}
+</style>
+</head>
+
+<body>
+	<div id="top"></div>
+	<div id="div1"></div>
+	<div id="ball"></div>
+	<div id="player1"></div>
+	<div id="player2"></div>
+	<div id="pt1">
+		PLAYER 1
+	</div>
+	<div id="pt2">
+		PLAYER 2
+	</div>
+	<div id="name">
+		PONG
+	</div>
+
+</body>
+</html>
