@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>resume</title>
+    <link href="../css/bootstrap3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/resume.css" rel="stylesheet">
+</head>
+<body ng-controller="MainCtrl">
+<!-- back-->
+<div id="back"></div>
+
+<div class="myInfo">
+    <table>
+        <tr>
+            <td style="width:30%"><strong>&nbsp;赵晨</strong></td>
+            <td style="width:30%"><strong>&nbsp;男</strong></td>
+            <td style="width:30%"><strong>&nbsp;26岁</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                    <span class="glyphicon glyphicon-education">
+                        <strong>沈阳航空航天大学（本科）</strong>
+                    </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <strong>
+                    &nbsp;College English Test level 4
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                    <span class="glyphicon glyphicon-map-marker">
+                        <strong>现居住地北京</strong>
+                    </span>
+
+
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- top-->
+<div id="top">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2" style="white-space: nowrap;color:#ffffff;">
+            <h1>
+                <strong>
+                    Personal Resume
+                </strong>
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-6 col-sm-2 col-sm-offset-6 col-xs-2 col-xs-offset-2"
+             style="white-space: nowrap;color:#ffffff;">
+            <h1>
+                <strong>
+                    个人简历
+                </strong>
+            </h1>
+        </div>
+    </div>
+</div>
+
+<!-- tree-->
+<div id="tree">
+    <div class="circleDiv">
+        <img style="width:100px;" src="../img/test.jpg"/>
+        <span class="badge nameDiv">
+            赵晨
+        </span>
+    </div>
+
+
+    <div class="displayMark timeAll" ng-bind="time|date:'HH'">
+    </div>
+    <div class="displayMark timeAll" ng-bind="time|date:'mm'">
+    </div>
+    <div id="ss" class="displayMark timeSS" ng-bind="time|date:'ss'">
+    </div>
+    <div id="dd1" class="dd1">
+    </div>
+    <a data-toggle="modal" href="#myInfo" class="displayMark aInfo">
+        <strong>个人信息</strong>
+    </a>
+
+    <table class="myTable">
+        <tr>
+            <td style="width:30%"><strong>&nbsp;赵晨</strong></td>
+            <td style="width:30%"><strong>&nbsp;男</strong></td>
+            <td style="width:30%"><strong>&nbsp;26岁</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span class="glyphicon glyphicon-education">
+                    <strong>沈阳航空航天大学（本科）</strong>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <strong>
+                    &nbsp;College English Test level 4
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <span class="glyphicon glyphicon-map-marker">
+                    <strong>现居住地北京</strong>
+                </span>
+
+
+            </td>
+        </tr>
+    </table>
+    <div class="treeAPosotion">
+        <a href="../game.html" target="view_window" class="treeA">PONG</a>
+
+        <a href="" class="treeA" ng-click="myAngular();">My Angularjs code</a>
+
+        <a href="https://github.com/QutantumProgrammer/qutantumprogrammer.github.io/tree/master/myProject"
+           class="treeA">Source Code</a>
+    </div>
+    <a href="http://glyphicons.com/" target="view_window" class="Glyphicons">
+        Thanks:
+        <strong>
+            Glyphicons
+        </strong>
+        <span class="glyphicon glyphicon-heart">
+
+        </span>
+    </a>
+</div>
+
+<!-- content-->
+<!--<ui-view ></ui-view>-->
+<div id="content" ui-view>
+</div>
+<!--Modal-->
+<div class="modal fade" role="dialog" id="workModal" tabindex="-1">
+    <div class="modal-dialog modal-primary" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h4 style="color:#811515;">
+                    <strong>
+                        非IT工作经验
+                    </strong>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        2014.03 - 2015.06  沈阳志荣嘉华电子技术有限公司 
+                    </div>
+                    <div class="col-md-12 form-group">
+                        技术支持及销售
+                    </div>
+                    <div class="col-md-12 form-group">
+                        计算机硬件 | 企业性质：民营
+                    </div>
+                    <div class="col-md-2 form-group">
+                        工作描述
+                    </div>
+                    <div class="col-md-10 form-group">
+                        在任职期间担任技术支持及销售工作，给公司的各类产品提供技术支持，
+                        使用指导及售后服务，宣传视频后期剪辑，产品宣传活动的策划，实施。 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" role="dialog" id="myInfo" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background:#333;color:#ffffff;">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h4 style="">
+                    <strong>
+                        个人信息
+                    </strong>
+                </h4>
+            </div>
+            <div class="modal-body" style="padding:0 0 0 0;">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-user">
+                            <strong>赵晨&nbsp;男&nbsp;26岁</strong>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-education">
+                            <strong>沈阳航空航天大学（本科）</strong>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-font">
+                            <strong>College English Test level 4</strong>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-map-marker">
+                            <strong>现居住地北京&nbsp;辽宁沈阳人</strong>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-comment">
+                            <strong>zcfxs@hotmail.com</strong>
+                        </span>
+                    </li>
+                    <li class="list-group-item">
+                        <a href=""  ng-click="myAngular();">My Angularjs code</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="https://github.com/QutantumProgrammer/qutantumprogrammer.github.io/tree/master/myProject"
+                           >Source Code</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script data-main="main.js" src="../js/require.js"></script>
+</html>
