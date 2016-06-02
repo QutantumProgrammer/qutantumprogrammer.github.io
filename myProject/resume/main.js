@@ -5,7 +5,8 @@ require.config({
 		"angular-ui-route" : ["angular-ui-router.min"],
 		"jquery":["jquery-2.1.4.min"],
 		"bootstrap":["bootstrap.min"],
-		"app":["app"]
+		"app":["app"],
+		"angularAMD":"angularAMD"
 	},
 	shim:{
 		"angular-ui-route":{deps: ["angular"]},
@@ -13,12 +14,10 @@ require.config({
 	}
 });
 require([
-	"angular", 
-	"angular-ui-route", 
-	"jquery",
-	"bootstrap",
+	"../resume/myPlugin/my-loop",
+	"../resume/routerConfig",
 	"../resume/myPlugin/my-file-upload",
 	"../resume/controller/mainCtrl"
 	],function(){
-		angular.bootstrap(document, ['demoApp']);
+		angular.bootstrap(document, ['resumeApp']);
 	});

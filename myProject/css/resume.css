@@ -4,6 +4,12 @@
         width: 100%;
         background: none;
     }
+    .imgScroll{
+        transition: all 2s;
+        -moz-transition: all 2s; /* Firefox 4 */
+        -webkit-transition: all 2s; /* Safari 和 Chrome */
+        -o-transition: all 2s; /* Opera */
+    }
 
     #back {
         margin-left: 240px;
@@ -15,6 +21,7 @@
     }
 
     #top {
+        top: 0;
         width: 100%;
         margin-left: 240px;
         position: fixed;
@@ -28,6 +35,7 @@
         position: fixed;
         text-align: left;
         overflow-y: auto;
+        top: 0;
     }
 
     #content {
@@ -52,7 +60,6 @@
 
     .myTable tr:hover {
         cursor: default;
-        background-color: #000000;
     }
 
     .myTable td {
@@ -66,7 +73,7 @@
         background: #132637;
         height: 30px;
         width: 240px;
-        border-left: solid 5px #D7322B;
+        border-left: solid 5px #2F64F9;
         color: #c7c9d3;
     }
 
@@ -117,9 +124,6 @@
         cursor: default;
     }
 
-    .smallTreeTable {
-        display: none;
-    }
     .Glyphicons{
         display: block;
         positIon:absolute;
@@ -129,6 +133,12 @@
         height:30px;
         background:#333;
         padding:5px 0 5px 10px;
+    }
+    .displayMark{
+        display: none;
+    }
+    .backgroundHide{
+        background: none;
     }
 
 }
@@ -153,7 +163,7 @@
     }
 
     #tree {
-        background-color: #3e4b3e;
+        background-color: #333;
         width: 100%;
         height: 140px;
         position: fixed;
@@ -204,4 +214,72 @@
     .Glyphicons{
         display: none;
     }
+
+    .displayMark{
+        display: block;
+    }
+    .backgroundHide{
+        background: none;
+    }
+
+    .dd1{
+     transition: all 1s;
+     -moz-transition: all 1s; /* Firefox 4 */
+     -webkit-transition: all 1s; /* Safari 和 Chrome */
+     -o-transition: all 1s; /* Opera */
+     height:100px;
+     width:100px;
+     background:#3CC38C;
+     border-radius: 10%;
+     position: absolute;
+     right: 30px;
+     top: 20px;
+ }
+ .aInfo{
+    padding-top: 25px;
+    background-color: #000000;
+    height:90px;
+    width:90px;
+    display: block;
+    border-radius: 10%;
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #ffffff;
+    text-align: center;
+    padding: 0 auto;
+}
+.aInfo:hover{
+    color: #D9EDF7;
+    text-decoration: none;
+}
+.aInfo:link{
+    color: #D9EDF7;
+    text-decoration: none;
+}
+.timeAll{
+    top:20px;
+    font-size:20px;
+    color:#ffffff;
+    margin-left:10px;
+    margin-top:20px;
+    float:left;
+    background: #12d4a5;
+    border: 4px solid #000000;
+}
+.timeSS{
+    border: 4px solid #000000;
+    top:20px;
+    font-size:20px;
+    color:#ffffff;
+    margin-left:10px;
+    margin-top:20px;
+    float:left;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s; /* Firefox 4 */
+    -webkit-transition: all 0.2s; /* Safari 和 Chrome */
+    -o-transition: all 0.2s; /* Opera */
+    background: #12d4a5;
+}
+
 }
