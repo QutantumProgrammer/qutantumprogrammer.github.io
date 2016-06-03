@@ -160,6 +160,7 @@
         width: 100%;
         position: fixed;
         background: none;
+        margin-left: 0;
     }
 
     #tree {
@@ -198,7 +199,7 @@
         left: 85px;
         background-color: #3f5e9e;
         font-size: 14px;
-        border: solid 4px #3e4b3e;
+        border: solid 4px #333;
         cursor: default;
         float: left;
     }
