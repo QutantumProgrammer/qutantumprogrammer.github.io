@@ -12,6 +12,6 @@ require.config({
         }
     },
 	shim:{
-		"bootstrap":["jquery","'css!../../../lib/bootstrap3.3.5/css/bootstrap'"]
+		"bootstrap":["jquery","css!../../../lib/bootstrap3.3.5/css/bootstrap"]
 	}
 });
