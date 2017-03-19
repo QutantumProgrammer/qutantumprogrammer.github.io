@@ -10,7 +10,7 @@ require.config({
         '*': {
             'css': '../../../lib/css.min'
         }
-    }
+    },
 	shim:{
 		"bootstrap":["jquery","'css!../../../lib/bootstrap3.3.5/css/bootstrap'"]
 	}
