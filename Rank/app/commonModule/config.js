@@ -6,7 +6,12 @@ require.config({
 		"bootstrap"		: "../../../lib/bootstrap.min",
 		"app" 			: "../../commonModule/app",
 	},
+	map: {
+        '*': {
+            'css': '../../../lib/css.min'
+        }
+    }
 	shim:{
-		"bootstrap":["jquery"]
+		"bootstrap":["jquery","'css!../../../lib/bootstrap3.3.5/css/bootstrap'"]
 	}
 });
