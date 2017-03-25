@@ -1,13 +1,20 @@
 define(['app'],function(app){
 	return app.controller('MainCtrl',function($scope, $http){
 		$scope.userData = [
-			{"id": "z01", "name": "Wingless", 		"rankPoints": 3, "icon": "../../../img/person_1.jpg", },
-			{"id": "l02", "name": "lsy坑ger", 		"rankPoints": 1, "icon": "../../../img/person_2.jpg", },
+			{"id": "z01", "name": "Wingless", 		"rankPoints": 5, "icon": "../../../img/person_1.jpg", },
+			{"id": "l02", "name": "lsy坑ger", 		"rankPoints": 2, "icon": "../../../img/person_2.jpg", },
 			{"id": "c03", "name": "小学生团委", 	"rankPoints": 4, "icon": "../../../img/person_3.jpg", },
-			{"id": "l04", "name": "cc丶超级大魔王", "rankPoints": 3, "icon": "../../../img/person_4.jpg", },
+			{"id": "l04", "name": "cc丶超级大魔王", "rankPoints": 6, "icon": "../../../img/person_4.jpg", },
 			{"id": "s05", "name": "路人钾", 		"rankPoints": 2, "icon": "../../../img/person_5.jpg", },
 			{"id": "x06", "name": "小学灬生委", 	"rankPoints": 5, "icon": "../../../img/person_6.jpg", },	
 		];
+
+		$scope.specialUserData = [
+			{"id": "yo7", "name": "小学灬宣委", 	"rankPoints": 3, "icon": "../../../img/person_7.jpg", },
+		];
+
+
+		
 
 		$scope.randomUserData = [];
 		$scope.displayRowData = [];
