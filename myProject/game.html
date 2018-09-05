@@ -450,6 +450,12 @@ $(function() {
 	temp.top = temp.top + $("#div1").height() / 2 - $("#player2").height() / 2;
 	temp.left = temp.left + $("#div1").width() + 1;
 	$('#player2').offset(temp);
+	
+	//设置ball位置
+  	temp = $('#div1').offset();
+  	temp.top = temp.top + $("#div1").height() / 2 - $("#player1").height() / 2;
+  	temp.left = temp.left + 6;
+ 	$('#ball').offset(temp);
 
 	//ball 运动
 	$(document).keydown(function(event) {
