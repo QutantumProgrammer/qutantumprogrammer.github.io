@@ -182,21 +182,32 @@
   }
 
   .dd {
+      display: inline-block;
+      width: 28px;
   }
 
   .dh {
+      display: inline-block;
+      width: 28px;
   }
 
   .dm {
+      display: inline-block;
+      width: 28px;
   }
 
   .ds {
+      display: inline-block;
+      width: 28px;
   }
 
   .dms {
+    display: inline-block;
+    width: 20px;
     font-size: 14px!important;
   }
   .colon{
+    padding:0 2px;
     vertical-align: super;
   }
 </style>
@@ -220,7 +231,7 @@
 </body>
 <script>
   setInterval(() => {
-    const endDate = new Date('2021-08-13T00:00:00');
+    const endDate = new Date('2021-12-25 00:00:00');
 
     let diffTime = endDate.getTime() - new Date().getTime();
     const leftDay = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
